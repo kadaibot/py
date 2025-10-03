@@ -19,6 +19,8 @@ async def on_ready():
 async def hello(interaction: discord.Interaction):
     await interaction.response.send_message(f"こんにちは、{interaction.user.mention}！")
 
-# Renderの環境変数からTOKENを読み込む
 TOKEN = os.getenv("DISCORD_TOKEN")
+if not TOKEN:
+    raise ValueError("環境変数 DISCORD_TOKEN が設定されていません！")
+
 bot.run(TOKEN)
